@@ -269,18 +269,13 @@ class User{
     }
 
     transfer(selfAcID,recieverID,recieverAcID,amount){
-        let withdraw = false
-        let deposit = false
-
         try {
             let index = this.findCustomer(recieverID)
             let recieverObj = User.allCustomers[index]
             console.log(this);
             console.log(recieverObj);
             let senderAccObj = this.withdrawAmount(selfAcID,amount)
-            withdraw = true
             let recieverAccObj = recieverObj.depositAmount(recieverAcID,amount)
-            deposit = true
             return[senderAccObj,recieverAccObj]
         } catch (error) {
             console.log(error.message);

@@ -10,6 +10,9 @@ class Account{
 
     withdrawAmount(amount){
         try {
+            if (this.bankBalance <= 1000) {
+                throw new Error('Minimum Balance of 1000 should be maintained')
+            }
             this.balance -= amount
             this.passbook.addTransaction(new Date(), 'Debited', amount, this.balance);
             return this
